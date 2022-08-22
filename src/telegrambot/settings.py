@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "news_agregator",
+    "bot_backend",
 ]
 
 MIDDLEWARE = [
@@ -76,7 +76,7 @@ WSGI_APPLICATION = "telegrambot.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "usupport",
+        "NAME": "saleBot",
         "USER": "postgres",
         "PASSWORD": "postgres",
         "HOST": os.environ.get("DBHOST"),
