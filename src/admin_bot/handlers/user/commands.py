@@ -1,7 +1,6 @@
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 
-from datetime import datetime
 from admin_bot.config.loader import bot
 from admin_bot.keyboards import inline as ik
 
