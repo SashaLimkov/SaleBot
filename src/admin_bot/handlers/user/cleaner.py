@@ -2,10 +2,8 @@ from typing import List
 
 from aiogram import types
 
-from bot.config.loader import bot
 
-
-async def clean_s(message: types.Message,  album: List[types.Message]):
+async def clean_s(message: types.Message, album: List[types.Message]):
     media_group = types.MediaGroup()
     for obj in album:
         if obj.photo:

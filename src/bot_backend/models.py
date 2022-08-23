@@ -24,3 +24,9 @@ class User(TimeBasedModel):
     number = models.CharField(max_length=255, verbose_name="Номер телефона")
     email = models.CharField(max_length=355, verbose_name="Почта")
     city = models.CharField(max_length=255, verbose_name="Город")
+
+
+class Post(TimeBasedModel):
+    album = models.CharField(max_length=20000, verbose_name="Альбом")
+    description = models.CharField(max_length=20000, verbose_name="Описание")
+    date = models.DateField(auto_now_add=False, verbose_name="Date")
