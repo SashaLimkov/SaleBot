@@ -29,4 +29,6 @@ class User(TimeBasedModel):
 class Post(TimeBasedModel):
     album = models.CharField(max_length=20000, verbose_name="Альбом")
     description = models.CharField(max_length=20000, verbose_name="Описание")
+    cost = models.CharField(max_length=10, verbose_name="Цена")
+    over_cost = models.CharField(max_length=10, verbose_name="Надценка")
     date = models.DateField(auto_now_add=False, verbose_name="Date")
