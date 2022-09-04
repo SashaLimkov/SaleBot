@@ -5,12 +5,24 @@ from admin_bot.config.loader import bot
 from admin_bot.keyboards import inline as ik
 
 
+async def main_menu(call: types.CallbackQuery, state: FSMContext):
+    await start_cmd(call.message, state)
+
+
 async def start_cmd(message: types.Message, state: FSMContext):
-    await bot.send_message(
-        chat_id=message.chat.id,
-        text=f"Выберите день",
-        reply_markup=await ik.get_days()
-    )
+    try:
+        await bot.edit_message_text(
+            chat_id=message.chat.id,
+            text=f"Выберите день",
+            message_id=message.message_id,
+            reply_markup=await ik.get_days(),
+        )
+    except:
+        await bot.send_message(
+            chat_id=message.chat.id,
+            text=f"Выберите день",
+            reply_markup=await ik.get_days(),
+        )
 
 
 async def error(update: types.Update, exception):
@@ -20,8 +32,5 @@ async def error(update: types.Update, exception):
         chat_id = r.callback_query.from_user.id
     except:
         chat_id = r.message.from_user.id
-    await bot.send_message(
-        chat_id=chat_id,
-        text="Напишите /start"
-    )
+    await bot.send_message(chat_id=chat_id, text="Напишите /start")
     return

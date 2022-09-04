@@ -8,22 +8,19 @@ from admin_bot.keyboards import inline as ik
 from admin_bot.utils.datetime_helper import get_datetime
 
 
-async def some_day_posts(call: types.CallbackQuery, callback_data: dict, state: FSMContext):
-    await show_post(call, callback_data["day"])
-
-
-async def show_post(call: types.CallbackQuery, key):
-    day = await get_datetime(key)
-    posts = [post for post in await posts_db.get_post(day)]
+async def show_post(call: types.CallbackQuery, callback_data):
     await bot.edit_message_text(
         chat_id=call.message.chat.id,
-        text="Спиосок доступных постов",
+        text="Список доступных постов",
+        message_id=call.message.message_id,
+        reply_markup=await ik.get_posts_by_date(callback_data),
     )
-    if posts:
-        for post in posts:
-            await bot.send_message(
-                chat_id=call.message.chat.id,
-                text=f"{post.description}, {post.date}"
-            )
-    else:
-        await call.answer(text="Нет постов за этот день")
+
+
+async def add_post_menu(call: types.CallbackQuery, callback_data, state):
+    await bot.edit_message_text(
+        chat_id=call.message.chat.id,
+        text="Список доступных постов",
+        message_id=call.message.message_id,
+        reply_markup=await ik.get_posts_by_date(callback_data),
+    )

@@ -1,12 +1,7 @@
 from django.contrib import admin
 
-from ..models import User
+from ..models import User, Member, Chanel
 
-
-class UserAdmin(admin.ModelAdmin):
-    list_display = ["name", "email", "number"]
-    list_display_links = ["name"]
-    search_fields = ["name", "email", "number"]
-
-
-admin.site.register(User, UserAdmin)
+admin.site.register(Member)
+admin.site.register(User)
+admin.site.register(Chanel)

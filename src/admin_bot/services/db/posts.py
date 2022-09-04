@@ -12,9 +12,15 @@ def get_user(user_id) -> User:
 @sync_to_async
 def create_user(user_id, name, second_name, number, email, nickname, city):
     try:
-        user = User(user_id=user_id, nickname=nickname,
-                    number=number, name=name,
-                    second_name=second_name, email=email, city=city)
+        user = User(
+            user_id=user_id,
+            nickname=nickname,
+            number=number,
+            name=name,
+            second_name=second_name,
+            email=email,
+            city=city,
+        )
         user.save()
         return user
     except Exception:

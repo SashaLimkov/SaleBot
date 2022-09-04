@@ -12,5 +12,3 @@ async def is_email_valid(email: str) -> bool:
     pattern = r"[^@]+@[^@]+\.[^@]+"
     res = re.fullmatch(pattern, email)
     return True if res else False
-
-

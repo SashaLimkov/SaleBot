@@ -1,3 +1,18 @@
 from aiogram.utils.callback_data import CallbackData
 
 reg = CallbackData("reg", "action")
+mm = CallbackData("mm", "action")
+mm_settings = CallbackData("mm_s", "action", "settings")
+mm_settings_act = CallbackData("mm_s_c", "action", "settings", "act2")
+mm_s_cur_ch = CallbackData("mm_s_c_c", "action", "settings", "act2", "act3")
+mm_s_info = CallbackData("mm_s_i", "action", "settings", "field")
+mm_s_info_c = CallbackData("mm_s_i_c", "action", "settings", "field")
+mm_s_link = CallbackData("mm_s_link", "action", "settings", "field")
+mm_l_link = CallbackData("mm_l_link", "action", "settings", "field")
+mm_signature = CallbackData("sig", "action", "settings", "act")
+mm_formula = CallbackData("formula", "action", "settings", "page")
+mm_formula_select = CallbackData("formula_s", "action", "settings", "select")
+mm_cur = CallbackData("cur", "action", "settings", "cur")
+mm_add_photo = CallbackData("mm_add_p", "action", "settings", "add")
+mm_post = CallbackData("mm_p", "action", "settings", "field")
+mm_post_c = CallbackData("mm_p_c", "action", "settings", "field")

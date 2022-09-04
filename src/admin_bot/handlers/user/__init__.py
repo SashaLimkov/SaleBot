@@ -10,6 +10,9 @@ def setup(dp: Dispatcher):
     dp.middleware.setup(AlbumMiddleware())
     dp.register_errors_handler(commands.error)
     dp.register_message_handler(commands.start_cmd, filters.CommandStart(), state="*")
-    dp.register_callback_query_handler(posts.some_day_posts, cd.date.filter())
-    dp.register_message_handler(cleaner.clean_s, is_media_group=True,
-                                content_types=types.ContentType.ANY)
+    dp.register_callback_query_handler(posts.show_post, cd.date.filter())
+    dp.register_callback_query_handler(commands.main_menu, filters.Text("mm"))
+    dp.register_callback_query_handler(posts.add_post_menu, cd.add_post.filter())
+    dp.register_message_handler(
+        cleaner.clean_s, is_media_group=True, content_types=types.ContentType.ANY
+    )

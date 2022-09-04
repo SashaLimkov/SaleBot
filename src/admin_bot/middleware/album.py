@@ -22,7 +22,6 @@ class AlbumMiddleware(BaseMiddleware):
     async def on_process_message(self, message: types.Message, data: dict):
         if not message.media_group_id:
             return
-
         try:
             self.album_data[message.media_group_id].append(message)
             raise CancelHandler()  # Tell aiogram to cancel handler for this group element
@@ -32,9 +31,10 @@ class AlbumMiddleware(BaseMiddleware):
 
             message.conf["is_last"] = True
             data["album"] = self.album_data[message.media_group_id]
-        print(self.album_data)
 
-    async def on_post_process_message(self, message: types.Message, result: dict, data: dict):
+    async def on_post_process_message(
+        self, message: types.Message, result: dict, data: dict
+    ):
         """Clean up after handling our album."""
         if message.media_group_id and message.conf.get("is_last"):
             del self.album_data[message.media_group_id]
